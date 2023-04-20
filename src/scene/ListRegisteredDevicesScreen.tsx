@@ -2,21 +2,52 @@ import * as React from 'react';
 import {View, Text, Button, FlatList, ListRenderItemInfo} from 'react-native';
 import {
   DeviceInfo,
-  useDeleteDevice,
-  useListRegisteredDevices,
+  ListRegisteredDevicesResponse,
+  deleteDevice,
+  listRegisteredDevices,
 } from 'react-native-cloud-ca';
-
-const USER_ID = 'duynq7_viettel7';
+import Loading from './Loading';
 
 function ListRegisteredDevicesScreen() {
-  const [listDevices, , listRegisteredDevicesFnc] = useListRegisteredDevices();
-  const [, , deleteDevicesFnc] = useDeleteDevice();
+  const [getListLoading, setGetListLoading] = React.useState<boolean>(false);
+  const [deleteLoading, setDeleteLoading] = React.useState<boolean>(false);
+  const [listDevices, setListDevices] =
+    React.useState<ListRegisteredDevicesResponse>([]);
 
   React.useEffect(() => {
-    listRegisteredDevicesFnc({
-      userId: USER_ID,
-    });
+    fetchDevices();
   }, []);
+
+  const fetchDevices = async () => {
+    try {
+      setGetListLoading(true);
+      const result = await listRegisteredDevices();
+      setListDevices(result);
+      // console.log(result);
+    } catch (error) {
+      console.log('error', error);
+    } finally {
+      setGetListLoading(false);
+    }
+  };
+
+  const onDeleteDevice = async (device_id: string) => {
+    try {
+      console.log('device_id', device_id);
+      setDeleteLoading(true);
+      const response = await deleteDevice({deviceId: device_id});
+      // setListDevices(
+      //   listDevices.filter(device => device.device_id !== device_id),
+      // );
+      if (response?.result) {
+        fetchDevices();
+      }
+    } catch (error) {
+      console.log('error', error);
+    } finally {
+      setDeleteLoading(false);
+    }
+  };
 
   const renderItem = ({item, index}: ListRenderItemInfo<DeviceInfo>) => {
     return (
@@ -25,12 +56,7 @@ function ListRegisteredDevicesScreen() {
         <Text>devices name: {item?.device_name}</Text>
         <Button
           title="Delete"
-          onPress={() => {
-            deleteDevicesFnc({deviceId: item?.device_id});
-            listRegisteredDevicesFnc({
-              userId: USER_ID,
-            });
-          }}
+          onPress={() => onDeleteDevice(item?.device_id)}
         />
       </View>
     );
@@ -43,6 +69,8 @@ function ListRegisteredDevicesScreen() {
         renderItem={renderItem}
         keyExtractor={(item, index) => index.toString()}
       />
+
+      {(getListLoading || deleteLoading) && <Loading />}
     </View>
   );
 }

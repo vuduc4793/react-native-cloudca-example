@@ -1,17 +1,17 @@
 import * as React from 'react';
 import {View, Text, Button, TextInput, StyleSheet} from 'react-native';
 import {QRFormat, useGenerateQRCode} from 'react-native-cloud-ca';
+import Loading from './Loading';
 
-const CLIENT_ID = 'samples_test_client';
-const USER_ID = 'duynq7_viettel7';
+const CLIENT_ID = '';
 function GenerateQRCodeScreen() {
   const [size, setSize] = React.useState<string>('256');
-  const [genQRresult, genQRerror, onGenerateQRCode] = useGenerateQRCode();
+  const [genQRresult, genQRerror, onGenerateQRCode, isLoading] =
+    useGenerateQRCode();
 
   const handleGenQR = () => {
     onGenerateQRCode({
       size: size,
-      userId: USER_ID,
       clientId: CLIENT_ID,
       format: QRFormat.PNG,
     });
@@ -33,6 +33,8 @@ function GenerateQRCodeScreen() {
         </Text>
       </View>
       <Button title="Generate QR Code" onPress={handleGenQR} />
+
+      {isLoading && <Loading />}
     </View>
   );
 }

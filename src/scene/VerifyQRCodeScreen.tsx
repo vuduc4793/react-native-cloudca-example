@@ -1,14 +1,15 @@
 import * as React from 'react';
 import {View, Text, Button, TextInput, StyleSheet} from 'react-native';
 import {useVerifyQRCode} from 'react-native-cloud-ca';
+import Loading from './Loading';
 
-const USER_ID = 'duynq7_viettel7';
 function VerifyQRCodeScreen() {
   const [qrCode, setQrCode] = React.useState<string>('');
-  const [verifyQRresult, verifyQRerror, onVerifyQRCode] = useVerifyQRCode();
+  const [verifyQRresult, verifyQRerror, onVerifyQRCode, isLoading] =
+    useVerifyQRCode();
 
   const handleVerifyQRCode = () => {
-    onVerifyQRCode({qrCode: qrCode, userId: USER_ID});
+    onVerifyQRCode({qrCode: qrCode});
   };
 
   return (
@@ -27,6 +28,7 @@ function VerifyQRCodeScreen() {
         <Text>{verifyQRresult && JSON.stringify(verifyQRresult)}</Text>
       </View>
       <Button title="Generate QR Code" onPress={handleVerifyQRCode} />
+      {isLoading && <Loading />}
     </View>
   );
 }

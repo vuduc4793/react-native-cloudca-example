@@ -54,7 +54,7 @@ function VerifyOTPScreen() {
           onChangeText={setDeviceToken}
           value={deviceToken}
           style={styles.textInputContainer}
-          placeholder={'User ID'}
+          placeholder={'Device token'}
         />
         <Text>{result?.result}</Text>
 

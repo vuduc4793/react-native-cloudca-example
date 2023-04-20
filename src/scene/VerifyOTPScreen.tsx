@@ -8,16 +8,15 @@ import {
   StyleSheet,
 } from 'react-native';
 import {useVerifyOTP} from 'react-native-cloud-ca';
-
-const USER_ID = 'duynq7_viettel7';
+import Loading from './Loading';
 
 function VerifyOTPScreen() {
   const [otpSms, setOtpSms] = React.useState<string>('');
   const [otpMail, setOtpMail] = React.useState<string>('');
-  const [result, error, onVerifyOTP] = useVerifyOTP();
+  const [result, error, onVerifyOTP, isLoading] = useVerifyOTP();
 
   const onAuthen = () => {
-    onVerifyOTP({otpMail, otpSms, userId: USER_ID});
+    onVerifyOTP({otpMail, otpSms});
   };
 
   return (
@@ -47,6 +46,8 @@ function VerifyOTPScreen() {
         </View>
       </View>
       <Button title="Verify OTP" onPress={onAuthen} />
+
+      {isLoading && <Loading />}
     </SafeAreaView>
   );
 }

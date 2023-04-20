@@ -8,6 +8,7 @@ import {
   StyleSheet,
 } from 'react-native';
 import {useAuthenticateClient} from 'react-native-cloud-ca';
+import Loading from './Loading';
 
 const CLIENT_ID = 'samples_test_client';
 const CLIENT_SECRET = '205640fd6ea8c7d80bb91c630b52d286d21ee511';
@@ -17,8 +18,12 @@ function AuthenClient() {
   const [clientId, setClientId] = React.useState<string>(CLIENT_ID);
   const [clientSecret, setClientSecret] = React.useState<string>(CLIENT_SECRET);
   const [grantType, setGrantType] = React.useState<string>(GRANT_TYPE);
-  const [authenClientResult, authenClientError, onAuthenticateClient] =
-    useAuthenticateClient();
+  const [
+    authenClientResult,
+    authenClientError,
+    onAuthenticateClient,
+    isLoading,
+  ] = useAuthenticateClient();
 
   const onAuthen = () => {
     onAuthenticateClient({clientId, clientSecret, grantType});
@@ -57,6 +62,7 @@ function AuthenClient() {
         </View>
       </View>
       <Button title="Authenticate Client" onPress={onAuthen} />
+      {isLoading && <Loading />}
     </SafeAreaView>
   );
 }

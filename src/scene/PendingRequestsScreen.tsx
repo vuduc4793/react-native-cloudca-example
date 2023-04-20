@@ -48,7 +48,7 @@ function PendingRequestsScreen() {
       ) {
         setResult('');
         setIsLoading(true);
-        const response = authorisationPendingRequest({
+        const response = await authorisationPendingRequest({
           biometricApiType: 'AUTO',
           localizedReason: 'Unlock to add device',
           hashAlgorithm: getPendingResult?.hash_algorithm,
@@ -56,10 +56,10 @@ function PendingRequestsScreen() {
           transactionID: getPendingResult?.transaction_id,
         });
 
-        setResult('author' + JSON.stringify(response));
+        setResult('author' + response?.result || 'Successed');
       }
     } catch (error) {
-      setResult('author' + JSON.stringify(error as CustomError));
+      setResult('author' + (error as CustomError)?.message);
     } finally {
       setIsLoading(false);
     }
@@ -79,10 +79,9 @@ function PendingRequestsScreen() {
           request: getPendingResult?.request,
           transactionID: getPendingResult?.transaction_id,
         });
-
-        setResult('cancel' + JSON.stringify(response));
+        setResult('cancel' + response?.result || 'Successed');
       } catch (error) {
-        setResult('cancel' + JSON.stringify(error as CustomError));
+        setResult('cancel' + (error as CustomError)?.message);
       } finally {
         setIsLoading(false);
       }
@@ -92,12 +91,22 @@ function PendingRequestsScreen() {
   return (
     <View style={{flex: 1, justifyContent: 'space-between'}}>
       <View>
-        <Text>{`hash_algorithm: ${getPendingResult?.hash_algorithm}`}</Text>
-        <Text>{`request: ${getPendingResult?.request}`}</Text>
-        <Text>{`transaction_id: ${getPendingResult?.transaction_id}`}</Text>
-        <Text>{`Get Pending Error: ${JSON.stringify(getPendingError)}`}</Text>
-
-        <Text>{!!result && result}</Text>
+        <Text>
+          {result?.length !== 0 ? (
+            result
+          ) : (
+            <>
+              <Text>{`hash_algorithm: ${getPendingResult?.hash_algorithm}`}</Text>
+              <Text>{`request: ${getPendingResult?.request}`}</Text>
+              <Text>{`transaction_id: ${getPendingResult?.transaction_id}`}</Text>
+            </>
+          )}
+        </Text>
+        <Text />
+        <Text>
+          {!!getPendingError?.message &&
+            `Get Pending Error: ${JSON.stringify(getPendingError)}`}
+        </Text>
       </View>
       <View style={{flexDirection: 'row', justifyContent: 'space-around'}}>
         <Button title="Author" onPress={author} disabled={disableButton} />

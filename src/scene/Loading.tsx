@@ -1,11 +1,12 @@
 import React from 'react';
-import {ActivityIndicator, View} from 'react-native';
+import {ActivityIndicator, View, Dimensions} from 'react-native';
 
 const Loading = () => {
+  const {width} = Dimensions.get('screen');
   return (
     <View
       style={{
-        width: ' 100%',
+        width: width,
         height: '100%',
         position: 'absolute',
         top: 0,

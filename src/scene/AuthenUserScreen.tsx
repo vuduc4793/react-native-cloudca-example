@@ -8,12 +8,13 @@ import {
   SafeAreaView,
 } from 'react-native';
 import {useAuthenticateUser} from 'react-native-cloud-ca';
+import Loading from './Loading';
 
-const USER_ID = 'duynq7_viettel7';
+const USER_ID = 'MST_0123456787-932';
 
 function AuthenUser() {
   const [userId, setUserId] = React.useState<string>(USER_ID);
-  const [result, error, onAuthenticateUser] = useAuthenticateUser();
+  const [result, error, onAuthenticateUser, isLoading] = useAuthenticateUser();
   const onAuthen = () => {
     onAuthenticateUser({userId});
   };
@@ -38,6 +39,7 @@ function AuthenUser() {
         </Text>
       </View>
       <Button title="Authenticate User" onPress={onAuthen} />
+      {isLoading && <Loading />}
     </SafeAreaView>
   );
 }
