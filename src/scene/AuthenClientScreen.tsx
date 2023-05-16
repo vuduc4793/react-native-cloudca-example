@@ -84,8 +84,10 @@ const styles = StyleSheet.create({
   },
   textInputContainer: {
     borderWidth: 1,
+    color: 'black',
     borderRadius: 12,
     paddingHorizontal: 10,
     marginBottom: 10,
+    paddingVertical: 10,
   },
 });

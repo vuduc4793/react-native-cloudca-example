@@ -8,6 +8,7 @@
     "lint": "eslint .",
     "start": "react-native start",
     "pod": "cd ios && pod install && cd ..",
+    "build:android": "cd android && ./gradlew clean && ./gradlew assembleRelease && cd ..",
     "test": "jest"
   },
   "dependencies": {
@@ -15,7 +16,7 @@
     "@react-navigation/native-stack": "^6.9.12",
     "react": "18.2.0",
     "react-native": "0.71.3",
-    "react-native-cloud-ca": "^0.2.6",
+    "react-native-cloud-ca": "^0.2.7",
     "react-native-safe-area-context": "^4.5.0",
     "react-native-screens": "^3.20.0"
   },

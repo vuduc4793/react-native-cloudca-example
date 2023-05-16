@@ -5892,10 +5892,10 @@ react-is@^17.0.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.2.tgz#e691d4a8e9c789365655539ab372762b0efb54f0"
   integrity sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
 
-react-native-cloud-ca@^0.2.6:
-  version "0.2.6"
-  resolved "https://registry.yarnpkg.com/react-native-cloud-ca/-/react-native-cloud-ca-0.2.6.tgz#3e44418adfdc385bd7c59ee80fd21fb120a4d56f"
-  integrity sha512-LzmYmqqZRqZBENXAzwwBEQ5Gfp1Bz9OUYzSrlLuKlNmcUQMj5tU4wo/vgseOWkF3mqQw/AZCMRq5tygzqekpTA==
+react-native-cloud-ca@^0.2.7:
+  version "0.2.7"
+  resolved "https://registry.yarnpkg.com/react-native-cloud-ca/-/react-native-cloud-ca-0.2.7.tgz#c1d3eb6e8e149bc2ddce08cd8899de73eb127fae"
+  integrity sha512-Nynjiu4E+w6nEQgQ+P/VF/uZyHjaIWjn1EC09Yg5OGMv7Rc9CzOqQDx69u3f2ijwGGuNWgFKMLX0LhEPw3zDHw==
 
 react-native-codegen@^0.71.5:
   version "0.71.5"

@@ -92,9 +92,11 @@ const styles = StyleSheet.create({
     color: 'black',
   },
   textInputContainer: {
+    color: 'black',
     borderWidth: 1,
     borderRadius: 12,
     paddingHorizontal: 10,
     marginBottom: 10,
+    paddingVertical: 10,
   },
 });

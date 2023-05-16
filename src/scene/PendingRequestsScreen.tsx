@@ -1,6 +1,6 @@
 import {useFocusEffect} from '@react-navigation/native';
 import * as React from 'react';
-import {View, Text, Button} from 'react-native';
+import {View, Text, Button, ScrollView} from 'react-native';
 import {
   authorisationPendingRequest,
   cancelPendingRequest,
@@ -90,7 +90,7 @@ function PendingRequestsScreen() {
 
   return (
     <View style={{flex: 1, justifyContent: 'space-between'}}>
-      <View>
+      <ScrollView bounces={false}>
         <Text>
           {result?.length !== 0 ? (
             result
@@ -107,7 +107,7 @@ function PendingRequestsScreen() {
           {!!getPendingError?.message &&
             `Get Pending Error: ${JSON.stringify(getPendingError)}`}
         </Text>
-      </View>
+      </ScrollView>
       <View style={{flexDirection: 'row', justifyContent: 'space-around'}}>
         <Button title="Author" onPress={author} disabled={disableButton} />
         <Button

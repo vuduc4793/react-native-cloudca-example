@@ -26,7 +26,10 @@ function GenerateQRCodeScreen() {
           style={styles?.textInputContainer}
           placeholder={'Size'}
         />
-        <TextInput value={genQRresult?.qr_code} />
+        <TextInput
+          value={genQRresult?.qr_code}
+          style={styles?.textInputContainer}
+        />
         <Text>
           {genQRerror?.code}
           {genQRerror?.message}
@@ -55,9 +58,11 @@ const styles = StyleSheet.create({
     color: 'black',
   },
   textInputContainer: {
+    color: 'black',
     borderWidth: 1,
     borderRadius: 12,
     paddingHorizontal: 10,
     marginBottom: 10,
+    paddingVertical: 10,
   },
 });
