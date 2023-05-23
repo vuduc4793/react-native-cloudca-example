@@ -16,7 +16,7 @@ function VerifyOTPScreen() {
   const [result, error, onVerifyOTP, isLoading] = useVerifyOTP();
 
   const onAuthen = () => {
-    onVerifyOTP({otpMail, otpSms});
+    onVerifyOTP({otpMail, otpSms, biometricApiType: 'AUTO'});
   };
 
   return (

@@ -31,6 +31,12 @@ function MenuScreen() {
 
   const handleApiAction = (key: number) => {
     switch (key) {
+      case -1:
+        navigation.navigate('Init Data' as never);
+        break;
+      case 0:
+        navigation.navigate('Cloud CA UI' as never);
+        break;
       case 1:
         navigation.navigate('Authen Client' as never);
         break;
@@ -180,7 +186,6 @@ export default MenuScreen;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     justifyContent: 'space-between',
   },
   centeredView: {
@@ -221,5 +226,11 @@ const styles = StyleSheet.create({
   modalText: {
     marginBottom: 15,
     textAlign: 'center',
+  },
+  uiContainerButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-around',
+    marginVertical: 10,
   },
 });

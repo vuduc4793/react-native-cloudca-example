@@ -1,4 +1,6 @@
 export const API_LIST = [
+  {label: 'Init Data', key: -1},
+  {label: 'Cloud CA UI', key: 0},
   {label: 'Authenticate Client', key: 1},
   {label: 'Authenticate User', key: 2},
   {label: 'Verify OTP', key: 3},
@@ -15,3 +17,8 @@ export const API_LIST = [
   {label: 'Verify QR Code', key: 14},
   {label: 'Notification', key: 15},
 ];
+
+export const CLIENT_ID = 'samples_test_client';
+export const CLIENT_SECRET = '205640fd6ea8c7d80bb91c630b52d286d21ee511';
+export const GRANT_TYPE = 'client_credentials';
+export const USER_ID = 'MST_0123456787-932';
