@@ -14,7 +14,7 @@ import Loading from './Loading';
 const CLIENT_ID = 'samples_test_client';
 const CLIENT_SECRET = '205640fd6ea8c7d80bb91c630b52d286d21ee511';
 const GRANT_TYPE = 'client_credentials';
-const USER_ID = 'MST_0123456787-932';
+const USER_ID = 'MST_0123456787-475';
 const BASE_URL = 'https://remotesigning.viettel.vn';
 function InitDataScreen() {
   const [clientId, setClientId] = React.useState<string>(CLIENT_ID);

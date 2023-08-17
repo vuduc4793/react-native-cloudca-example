@@ -9,9 +9,11 @@ import {
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {sdkSetup, useSdkSetup} from 'react-native-cloud-ca';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {MenuParamList} from '../../routes';
 
 function HomeScreen() {
-  const navigation = useNavigation();
+  const navigation = useNavigation<NativeStackNavigationProp<MenuParamList>>();
   const [baseUrl, setBaseUrl] = React.useState<string>(
     'https://remotesigning.viettel.vn',
   );
